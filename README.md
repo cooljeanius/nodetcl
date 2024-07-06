@@ -9,7 +9,7 @@ This is especially useful for leveraging existing Tcl code or packages in a new 
 
 Just run `make` and a shared-library named `nodetcl.node` will be created.
 
-Compilation has only been tested on FreeBSD 8.2 with node-0.4.12 and tcl-8.5.10.
+Compilation was originally only tested on FreeBSD 8.2 with node-0.4.12 and tcl-8.5.10, but support for some additional platforms is in the works.
 
 It requires `node-waf` to be installed in order to build
 (Not all node distributions come with this binary for some reason...)

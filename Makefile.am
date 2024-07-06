@@ -27,10 +27,10 @@ all_with_node_waf: configure_with_node_waf build_with_node_waf
 
 build/Release/nodetcl.node: all_with_node_waf
 	@if test ! -d build/Release; then \
-		$(MKDIR_P) build/Release; \
+	  $(MKDIR_P) build/Release; \
 	fi
 	@if test -e ./build/Debug/nodetcl.node -a ! -e ./build/Release/nodetcl.node; then \
-		cp -f ./build/Debug/nodetcl.node ./build/Release; \
+	  cp -f ./build/Debug/nodetcl.node ./build/Release; \
 	fi
 
 clean_with_node_waf: wscript configure_with_node_waf
@@ -45,6 +45,11 @@ clean-local:
 	rm -rf .waf-1.*.*-* || rmdir .waf-1.*.*-*
 	rm -rf node_modules || rmdir node_modules
 .PHONY: clean-local
+
+distclean-local: clean-local
+	if test -d autom4te.cache && test -w .; then \
+	  (rm -rf autom4te.cache || rmdir autom4te.cache); \
+	fi
 
 install_with_node_waf: wscript configure_with_node_waf
 	$(NODE_WAF) install
@@ -82,9 +87,9 @@ check-local: example/nodetcl.node
 compare: src/nodetcl.node build/Release/nodetcl.node
 	@echo "running cmp..."
 	@if cmp -b src/nodetcl.node build/Release/nodetcl.node; then \
-		echo "waf-built nodetcl.node and autotools-built nodetcl.node are identical"; \
+	  echo "waf-built nodetcl.node and autotools-built nodetcl.node are identical"; \
 	else \
-		echo "waf-built nodetcl.node and autotools-build nodetcl.node came out different"; \
-		exit 1; \
+	  echo "waf-built nodetcl.node and autotools-build nodetcl.node came out different" >&2; \
+	  exit 1; \
 	fi
 .PHONY: compare
