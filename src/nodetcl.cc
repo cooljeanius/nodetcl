@@ -13,37 +13,48 @@
 #else
 # define NON_AUTOTOOLS_BUILD 1
 #endif /* HAVE_CONFIG_H */
+#ifndef __has_include
+# define __has_include(foo) 0
+#endif /* !__has_include */
 #ifdef NON_AUTOTOOLS_BUILD
 # include <v8.h>
 # include <node.h>
 #else
-# ifdef HAVE_V8_H
+# if defined(HAVE_V8_H) || __has_include(<v8.h>)
 #  include <v8.h>
 # else
-#  ifdef HAVE_NODE_V8_H
+#  if defined(HAVE_NODE_V8_H) || __has_include(<node/v8.h>)
 #   include <node/v8.h>
 #  else
-#   ifdef HAVE_NODE8_V8_H
+#   if defined(HAVE_NODE8_V8_H) || __has_include(<node8/v8.h>)
 #    include <node8/v8.h>
 #   else
-#    if defined(__GNUC__) && !defined(__STRICT_ANSI__)
-#     warning "nodetcl.cc expects a v8 header to be included."
-#    endif /* __GNUC__ && !__STRICT_ANSI__ */
+#    if defined(HAVE_NODE08_V8_H) || __has_include(<node08/v8.h>)
+#     include <node08/v8.h>
+#    else
+#     if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#      warning "nodetcl.cc expects a v8 header to be included."
+#     endif /* __GNUC__ && !__STRICT_ANSI__ */
+#    endif /* HAVE_NODE08_V8_H */
 #   endif /* HAVE_NODE8_V8_H */
 #  endif /* HAVE_NODE_V8_H */
 # endif /* HAVE_V8_H */
-# ifdef HAVE_NODE_H
+# if defined(HAVE_NODE_H) || __has_include(<node.h>)
 #  include <node.h>
 # else
-#  ifdef HAVE_NODE_NODE_H
+#  if defined(HAVE_NODE_NODE_H) || __has_include(<node/node.h>)
 #   include <node/node.h>
 #  else
-#   ifdef HAVE_NODE8_NODE_H
+#   if defined(HAVE_NODE8_NODE_H) || __has_include(<node8/node.h>)
 #    include <node8/node.h>
 #   else
-#    if defined(__GNUC__) && !defined(__STRICT_ANSI__)
-#     warning "nodetcl.cc expects a nodejs header to be included."
-#    endif /* __GNUC__ && !__STRICT_ANSI__ */
+#    if defined(HAVE_NODE08_NODE_H) || __has_include(<node08/node.h>)
+#     include <node08/node.h>
+#    else
+#     if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#      warning "nodetcl.cc expects a nodejs header to be included."
+#     endif /* __GNUC__ && !__STRICT_ANSI__ */
+#    endif /* HAVE_NODE08_NODE_H */
 #   endif /* HAVE_NODE8_NODE_H */
 #  endif /* HAVE_NODE_NODE_H */
 # endif /* HAVE_NODE_H */

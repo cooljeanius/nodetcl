@@ -9,19 +9,19 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Define to 1 if you have the `v8' library (-lv8). */
+/* Define to 1 if you have the 'v8' library (-lv8). */
 #undef HAVE_LIBV8
 
-/* Define to 1 if you have the `v8_base' library (-lv8_base). */
+/* Define to 1 if you have the 'v8_base' library (-lv8_base). */
 #undef HAVE_LIBV8_BASE
 
-/* Define to 1 if you have the `v8_nosnapshot' library (-lv8_nosnapshot). */
+/* Define to 1 if you have the 'v8_nosnapshot' library (-lv8_nosnapshot). */
 #undef HAVE_LIBV8_NOSNAPSHOT
 
-/* Define to 1 if you have the `v8_snapshot' library (-lv8_snapshot). */
+/* Define to 1 if you have the 'v8_snapshot' library (-lv8_snapshot). */
 #undef HAVE_LIBV8_SNAPSHOT
 
-/* Define to 1 if your system has a GNU libc compatible `malloc' function, and
+/* Define to 1 if your system has a GNU libc compatible 'malloc' function, and
    to 0 otherwise. */
 #undef HAVE_MALLOC
 
@@ -103,7 +103,7 @@
 /* Define to 1 if the C compiler supports function prototypes. */
 #undef PROTOTYPES
 
-/* Define to 1 if all of the C90 standard headers exist (not just the ones
+/* Define to 1 if all of the C89 standard headers exist (not just the ones
    required in a freestanding environment). This macro is provided for
    backward compatibility; new code need not use it. */
 #undef STDC_HEADERS
@@ -126,13 +126,19 @@
 /* Number of bits in a file offset, on hosts where this is settable. */
 #undef _FILE_OFFSET_BITS
 
-/* Define for large files, on AIX-style hosts. */
+/* Define to 1 on platforms where this makes off_t a 64-bit type. */
 #undef _LARGE_FILES
+
+/* Number of bits in time_t, on hosts where this is settable. */
+#undef _TIME_BITS
+
+/* Define to 1 on platforms where this makes time_t a 64-bit type. */
+#undef __MINGW_USE_VC2005_COMPAT
 
 /* Define like PROTOTYPES; this can be used by system headers. */
 #undef __PROTOTYPES
 
-/* Define to empty if `const' does not conform to ANSI C. */
+/* Define to empty if 'const' does not conform to ANSI C. */
 #undef const
 
 /* Define to rpl_malloc if the replacement function should be used. */
