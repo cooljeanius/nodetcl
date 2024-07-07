@@ -68,6 +68,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Dependencies
+      run: |
+        sudo apt-get -y install waffle-utils wafw00f python3-django-waffle nodejs node-gyp node-bindings node-pre-gyp v86d node-v8flags r-cran-v8 libc6-dev-amd64-cross libgcc-s1-amd64-cross libtbb-dev
+        npm install node-waf
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
