@@ -72,7 +72,8 @@ jobs:
       if: matrix.language == 'c-cpp'
       run: |
         sudo apt-get -y install waffle-utils wafw00f python3-django-waffle nodejs node-gyp node-bindings node-pre-gyp v86d node-v8flags r-cran-v8 libc6-dev-amd64-cross libgcc-s1-amd64-cross libtbb-dev dejagnu hfsutils-tcltk tcl-dev tcllib tclcurl tclcl dlocate locate node-locate-character node-p-locate node-locate-path libwhereami-dev findutils
-        npm install node-waf psweb-gyp
+        npm install node-waf
+        npm install psweb-gyp || npm install v8
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
