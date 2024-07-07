@@ -71,9 +71,10 @@ jobs:
     - name: Dependencies
       if: matrix.language == 'c-cpp'
       run: |
-        sudo apt-get -y install waffle-utils wafw00f python3-django-waffle nodejs node-gyp node-bindings node-pre-gyp v86d node-v8flags r-cran-v8 libc6-dev-amd64-cross libgcc-s1-amd64-cross libtbb-dev dejagnu hfsutils-tcltk tcl-dev tcllib tclcurl tclcl dlocate locate node-locate-character node-p-locate node-locate-path libwhereami-dev findutils libnode-dev node-devtools-protocol
+        sudo apt-get -y install waffle-utils wafw00f python3-django-waffle nodejs node-gyp node-bindings node-pre-gyp v86d node-v8flags r-cran-v8 libc6-dev-amd64-cross libgcc-s1-amd64-cross libtbb-dev dejagnu hfsutils-tcltk tcl-dev tcllib tclcurl tclcl dlocate locate node-locate-character node-p-locate node-locate-path libwhereami-dev findutils libnode-dev node-devtools-protocol npm tcllib-critcl
         npm install node-waf
         npm install psweb-gyp || npm install v8
+        npm install v8-compile-cache-lib
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -116,7 +117,7 @@ jobs:
       if: failure()
       run: |
         if test -x "$(which locate)"; then \
-          which locate && locate v8config.h; \
+          which locate && (locate v8config.h || echo "unable to locate v8config.h!"); \
         elif test -x "$(which mlocate)"; then \
           which mlocate && mlocate v8config.h; \
         elif test -x "$(which plocate)"; then \
