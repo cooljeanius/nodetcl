@@ -142,7 +142,7 @@ else
 fi
 AC_PATH_PROGS([NODE_BIN],[node node8 node08],[],[${npm_path}:/opt/local/bin])
 AC_PATH_PROGS([NODE_WAF],[node-waf node-waf-1.6.2],[],
-              [${npm_path}:/opt/local/bin:/usr/local/bin])
+              [${npm_path}:/opt/local/bin:/usr/local/bin:/opt/sw/bin])
 if test "x${NODE_WAF}" = "x"; then
 	test -z "${NODE_WAF}" && echo "ERROR! NODE_WAF is unset!" >&2
 	AC_MSG_ERROR([node-waf not found; it is required to build])
@@ -216,6 +216,10 @@ AC_FUNC_MALLOC
 # Output.
 AC_CONFIG_FILES([Makefile])
 AC_CONFIG_COMMANDS([node-waf],[
-test ! -z ${NODE_WAF} && test -x ${NODE_WAF} && ${NODE_WAF} configure
+if test -n "${NODE_WAF}" && test -r "${NODE_WAF}" && test -s "${NODE_WAF}" && test -x "${NODE_WAF}"; then
+  echo "NODE_WAF is '${NODE_WAF}'" && ${NODE_WAF} configure
+elif test "x${NODE_WAF}" = "x"; then
+  test -z "${NODE_WAF}" && echo "NODE_WAF is unset, so skipping this..."
+fi
 ])
 AC_OUTPUT

@@ -8,6 +8,12 @@ clean:
 	rm -rf build
 	rm -f nodetcl.node
 
+distclean:
+	rm -fv *~ autotools_build-aux/*~ *.log
+	if test -d autom4te.cache && test -w .; then \
+	  (rm -rf autom4te.cache || rmdir autom4te.cache); \
+	fi
+
 install:
 	node-waf install
 

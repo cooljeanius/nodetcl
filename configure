@@ -8027,7 +8027,7 @@ else case e in #(
   ;;
   *)
   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-as_dummy="${npm_path}:/opt/local/bin:/usr/local/bin"
+as_dummy="${npm_path}:/opt/local/bin:/usr/local/bin:/opt/sw/bin"
 for as_dir in $as_dummy
 do
   IFS=$as_save_IFS
@@ -22994,7 +22994,11 @@ _LT_EOF
 
  ;;
     "node-waf":C)
-test ! -z ${NODE_WAF} && test -x ${NODE_WAF} && ${NODE_WAF} configure
+if test -n "${NODE_WAF}" && test -r "${NODE_WAF}" && test -s "${NODE_WAF}" && test -x "${NODE_WAF}"; then
+  echo "NODE_WAF is '${NODE_WAF}'" && ${NODE_WAF} configure
+elif test "x${NODE_WAF}" = "x"; then
+  test -z "${NODE_WAF}" && echo "NODE_WAF is unset, so skipping this..."
+fi
  ;;
 
   esac

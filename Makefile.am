@@ -1,7 +1,7 @@
 ACLOCAL_AMFLAGS = -I autotools_m4 --install
 
 CLEANFILES = *~ ./*.o build/*.o src/*.o
-DISTCLEANFILES = *~ .DS_Store autoscan.log npm-debug.log .lock-wscript
+DISTCLEANFILES = *~ */*~ .DS_Store autoscan.log npm-debug.log .lock-wscript
 
 AM_CPPFLAGS = -I$(srcdir)
 AM_CFLAGS = -Wall
