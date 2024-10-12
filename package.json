@@ -25,6 +25,7 @@
     "node"
   ],
   "dependencies": {
+    "node-gyp": "^10.2.0",
     "node-waf": "^10.1.0"
   },
   "scripts": {
