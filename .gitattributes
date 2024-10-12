@@ -8,5 +8,6 @@ autotools_build-aux/missing linguist-vendored
 aclocal.m4 linguist-generated
 autotools_m4/libtool.m4 linguist-vendored
 autotools_m4/lt*.m4 linguist-vendored
+configure linguist-generated
 configure.scan linguist-generated
 Makefile.in linguist-generated
